@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Z4usX | Python Developer</title>
+    <title>Z4usXcode | Python Developer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
@@ -15,16 +15,23 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
 
         .card {
             background: rgba(2, 6, 23, 0.95);
             border-radius: 16px;
             padding: 40px 30px;
-            max-width: 480px;
+            max-width: 500px;
             width: 95%;
-            box-shadow: 0 0 30px rgba(0,0,0,0.7);
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
             text-align: center;
+            animation: fadeIn 1.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .avatar {
@@ -34,11 +41,17 @@
             border: 3px solid #38bdf8;
             margin-bottom: 20px;
             object-fit: cover;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 10px #38bdf8; }
+            to { box-shadow: 0 0 25px #38bdf8; }
         }
 
         h1 {
             margin: 0;
-            font-size: 30px;
+            font-size: 32px;
             color: #38bdf8;
         }
 
@@ -48,9 +61,10 @@
         }
 
         .bio {
-            font-size: 15px;
+            font-size: 16px;
             line-height: 1.6;
             margin-bottom: 25px;
+            min-height: 50px;
         }
 
         .skills span {
@@ -62,6 +76,13 @@
             margin: 4px;
             font-size: 13px;
             color: #38bdf8;
+            transition: 0.3s;
+        }
+
+        .skills span:hover {
+            background: #38bdf8;
+            color: #020617;
+            transform: scale(1.1);
         }
 
         .section-title {
@@ -87,6 +108,7 @@
         .links a:hover {
             background: #38bdf8;
             color: #020617;
+            transform: translateX(6px);
         }
 
         footer {
@@ -99,16 +121,15 @@
 <body>
     <div class="card">
 
-        <!-- Upload your Telegram profile photo to the repo as: pp.jpg -->
+        <!-- Upload your Telegram profile photo as: pp.jpg -->
         <img class="avatar" src="pp.jpg" alt="Avatar">
 
-        <h1>Z4usX</h1>
+        <h1>Z4usXcode</h1>
         <div class="username">@Z4usX</div>
 
+        <!-- Typing animation text -->
         <div class="bio">
-            Python developer 🐍<br>
-            Working on automation, bot systems and API integrations.  
-            Building TikTok tools and Telegram bots.
+            <span id="typing"></span>
         </div>
 
         <div class="skills">
@@ -122,7 +143,7 @@
         <div class="section-title">🚀 Bot Projects</div>
         <div class="links">
             <a href="https://t.me/emailllinkk_bot" target="_blank">📧 TikTok Email Link Bot</a>
-            <a href="https://t.me/Zeusbindsbot" target="_blank">🔗 TikTok External Bind Bot</a>
+            <a href="https://t.me/Zeusbindsbot" target="_blank">🔗 TikTok External Link Bot</a>
         </div>
 
         <div class="section-title">🔥 Official Telegram Channels</div>
@@ -137,14 +158,33 @@
 
         <div class="section-title">🔗 Contact</div>
         <div class="links">
-            <a href="https://github.com/Z4usX" target="_blank">GitHub</a>
+            <a href="https://github.com/Z4usXcode" target="_blank">GitHub</a>
             <a href="https://t.me/Z4usX" target="_blank">Telegram</a>
         </div>
 
         <footer>
-            © 2026 Z4usX • GitHub Pages
+            © 2026 Z4usXcode • GitHub Pages
         </footer>
 
     </div>
+
+    <!-- Typing animation script -->
+    <script>
+        const text = "Python developer 🐍 Working on automation, bot systems and API integrations. Building TikTok tools and Telegram bots.";
+        let index = 0;
+        const speed = 40;
+        const target = document.getElementById("typing");
+
+        function typeWriter() {
+            if (index < text.length) {
+                target.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        typeWriter();
+    </script>
+
 </body>
 </html>
